@@ -1,17 +1,17 @@
  resource "google_cloud_run_service" "default" {
-  name     = "cloudrun-srv"
-  location = "us-central1"
+  name     = var.name 
+  location = var.location 
 
   template {
     spec {
       containers {
-        image = "us-docker.pkg.dev/cloudrun/container/hello"
+        image = var.image 
       }
     }
   }
 
   traffic {
-    percent         = 100
-    latest_revision = true
+    percent         = var.percent
+    latest_revision =  var.latest_version 
   }
 }
